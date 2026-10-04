@@ -3,7 +3,7 @@ Simple Java - Selenium Automation Framework
 A simple Java-based Selenium automation framework built for UI automation practice and interview preparation.
 
 Tech Stack
-Java 17
+Java 24
 Selenium WebDriver 4
 TestNG
 Maven
