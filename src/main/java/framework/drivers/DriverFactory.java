@@ -1,8 +1,10 @@
 package framework.drivers;
 
+import framework.utils.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -13,8 +15,13 @@ public class DriverFactory {
     public static WebDriver initializeDriver(String browser) {
         switch (browser.toLowerCase()){
             case "chrome":
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                if (Boolean.parseBoolean(ConfigReader.get("headless"))) {
+                    options.addArguments("--headless=new");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                }
+                driver = new ChromeDriver(options);
                 return driver;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
