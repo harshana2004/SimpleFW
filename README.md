@@ -1,27 +1,39 @@
-Simple Java - Selenium Automation Framework
+# Simple Selenium-Java Automation Framework
 
-A simple Java-based Selenium automation framework built for UI automation practice and interview preparation.
+A simple Java-based Selenium automation framework built for UI automation practice, interview preparation, and CI execution.
 
-Tech Stack
-Java 24
-Selenium WebDriver 4
-TestNG
-Maven
-Page Object Model (POM)
-WebDriverManager
-Allure Reports
-Project Structure
+## Tech Stack
+
+* Java 24
+* Selenium WebDriver 4
+* TestNG
+* Maven
+* Page Object Model (POM)
+* WebDriverManager
+* Allure Reports
+* GitHub Actions
+
+## Project Structure
+
+```text
 SimpleFW/
 │
+├── .github/
+│   └── workflows/
+│       └── selenium-tests.yml
+│
 ├── src/
-│   ├── main/java/framework/
-│   │   ├── base/
-│   │   ├── drivers/
-│   │   ├── pages/
-│   │   └── utils/
+│   ├── main/
+│   │   └── java/
+│   │       └── framework/
+│   │           ├── base/
+│   │           ├── drivers/
+│   │           ├── pages/
+│   │           └── utils/
 │   │
 │   └── test/
-│       ├── java/tests/
+│       ├── java/
+│       │   └── tests/
 │       └── resources/
 │           └── config.properties
 │
@@ -31,57 +43,100 @@ SimpleFW/
 ├── testng.xml
 ├── .gitignore
 └── README.md
-Framework Features
-Page Object Model
-Reusable BasePage
-Centralised WebDriver management
-Configurable browser and test data
-Explicit waits
-TestNG test execution
-Screenshot capture on test failure
-Allure test reporting
-Maven build and test execution
-Running Tests
+```
 
-Run the tests using Maven:
+## Framework Features
 
-mvn clean test
-Generate Allure Report
+* Page Object Model
+* Reusable BasePage
+* Centralised WebDriver management
+* Configurable browser and test data
+* Explicit waits
+* TestNG test execution
+* Screenshot capture on test failure
+* Allure reporting
+* Maven build and test execution
+* GitHub Actions CI pipeline
+* Headless browser support for CI execution
 
-After the tests finish, generate the Allure HTML report:
+## Supported Browsers
 
-allure generate allure-results -o allure-report --clean
+The framework supports:
 
-Open the report:
-
-allure open allure-report
-Browsers
-
-The framework currently supports:
-
-Chrome
-Firefox
-Edge
+* Chrome
+* Firefox
+* Edge
 
 The browser can be configured in:
 
+```text
 src/test/resources/config.properties
+```
 
 Example:
 
+```properties
 browser=chrome
-Test Application
+headless=true
+```
 
-The framework uses SauceDemo as the practice application:
+## Test Application
 
+The framework currently uses SauceDemo as the practice application.
+
+```text
 https://www.saucedemo.com/
-Example Tests
+```
 
-The current test suite includes:
+## Test Scenarios
 
-Valid login
-Invalid login
-Add product to cart
-Author
+The current test suite covers:
 
-Harshana Premarathna
+* Valid login
+* Invalid login
+* Add product to cart
+
+## Running Tests Locally
+
+Run the test suite using Maven:
+
+```bash
+mvn clean test
+```
+
+## Allure Reporting
+
+Test execution generates Allure result files in:
+
+```text
+allure-results/
+```
+
+Generate the HTML report:
+
+```bash
+allure generate allure-results -o allure-report --clean
+```
+
+Open the report:
+
+```bash
+allure open allure-report
+```
+
+## Continuous Integration
+
+The project uses GitHub Actions to automatically execute the Selenium test suite.
+
+The workflow is located at:
+
+```text
+.github/workflows/selenium-tests.yml
+```
+
+The CI pipeline:
+
+1. Checks out the source code
+2. Sets up Java 24
+3. Configures Maven dependency caching
+4. Runs the
