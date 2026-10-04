@@ -1,4 +1,4 @@
-# Simple Selenium-Java Automation Framework
+# Simple Selenium Automation Framework
 
 A simple Java-based Selenium automation framework built for UI automation practice, interview preparation, and CI execution.
 
@@ -139,4 +139,31 @@ The CI pipeline:
 1. Checks out the source code
 2. Sets up Java 24
 3. Configures Maven dependency caching
-4. Runs the
+4. Runs the Maven test suite
+5. Executes Selenium tests in the CI environment
+
+The workflow runs automatically when code is pushed to the `main` branch or when a pull request is created against `main`.
+
+It can also be triggered manually using GitHub Actions.
+
+## Configuration
+
+Test configuration is maintained in:
+
+```text
+src/test/resources/config.properties
+```
+
+Example:
+
+```properties
+baseUrl=https://www.saucedemo.com/
+browser=chrome
+headless=true
+username=standard_user
+password=secret_sauce
+```
+
+## Author
+
+Harshana Premarathna
